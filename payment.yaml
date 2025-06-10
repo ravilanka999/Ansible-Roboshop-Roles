@@ -1,6 +1,6 @@
 - name: Configuring mongodb component using roles
-  hosts: mongodb
+  hosts: payment
   become: yes
   roles:
-  - mongodb
+  - payment
    
