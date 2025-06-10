@@ -1,3 +1,5 @@
 CART_HOST: cart.sindhu.agency
 USER_HOST: user.sindhu.agency
 RABBITMQ_HOST: rabbitmq.sindhu.agency
+ENV_USER: roboshop
+ENV_PASSWORD: roboshop123
