@@ -3,7 +3,7 @@
       name: common
       tasks_from: app-setup.yaml
 
-  - name: setting up pythn 
+  - name: python setup
     include_role:
       name: common
       tasks_from:: python.yaml
