@@ -15,7 +15,7 @@
     enabled: yes
 
 - name: create {{ component }} user
-  community.{{ component }}.{{ component }}_user:
+  community."{{ component }}"."{{ component }}_user":
     user: roboshop
     password: roboshop123
     permissions:
