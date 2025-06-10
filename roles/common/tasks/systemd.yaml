@@ -1,6 +1,6 @@
 - name: copying service file to system directory
   ansible.builtin.template:
-    src: {{ component }}.service.j2
+    src: "{{ component }}".service.j2
     dest: /etc/systemd/system/{{ component }}.service
 
 - name: Daemon-reload
@@ -9,7 +9,7 @@
 
 - name: Enable and start {{ component }} service
   ansible.builtin.service:
-    name: {{ component }}
+    name: "{{ component }}"
     state: started
     enabled: yes
 
