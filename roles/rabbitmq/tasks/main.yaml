@@ -8,13 +8,13 @@
     name: "{{ component }}-server"
     state: installed
 
-- name: enable and start {{ component }}
+- name: enable and start rabbitmq
   ansible.builtin.service:
     name: "{{ component }}-server"
     state: started
     enabled: yes
 
-- name: create {{ component }} user
+- name: create roboshop user
   community."{{ component }}"."{{ component }}_user":
     user: roboshop
     password: roboshop123
