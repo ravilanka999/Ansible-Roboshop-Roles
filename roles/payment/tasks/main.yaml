@@ -8,8 +8,8 @@
       name: common
       tasks_from: python.yaml
  
-  
-  - name: systemd setup 
+
+  - name: system related
     include_role:
       name: common
-      tasks_from:: systemd.yaml
+      tasks_from: systemd.yaml  
