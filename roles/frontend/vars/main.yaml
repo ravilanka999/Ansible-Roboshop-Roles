@@ -2,4 +2,4 @@ CATALOGUE_HOST: catalogue.sindhu.agency
 USER_HOST: user.sindhu.agency
 CART_HOST: cart.sindhu.agency
 SHIPPING_HOST: shipping.sindhu.agency
-# PAYMENT_HOST: payment.sindhu.agency
+PAYMENT_HOST: payment.sindhu.agency
