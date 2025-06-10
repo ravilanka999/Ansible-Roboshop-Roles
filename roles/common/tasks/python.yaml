@@ -1,3 +1,4 @@
+    
 - name: install python3 packages
   ansible.builtin.dnf:
     name: "{{ item }}"
@@ -6,7 +7,6 @@
   - python3 
   - gcc 
   - python3-devel
-
 
 - name: install dependencies
   ansible.builtin.pip:
