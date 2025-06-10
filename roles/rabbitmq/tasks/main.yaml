@@ -15,7 +15,7 @@
     enabled: yes
 
 - name: create roboshop user
-  community.{{ component }}.{{ component }}_user:
+  community.rabbitmq.rabbitmq_user:
     user: roboshop
     password: roboshop123
     permissions:
