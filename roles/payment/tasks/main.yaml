@@ -1,15 +1,53 @@
-  - name: app-setup
-    include_role:
-      name: common
-      tasks_from: app-setup.yaml
+- name: install python3 packages
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: installed
+  loop:
+  - python3 
+  - gcc 
+  - python3-devel
 
-  - name: setting python
-    include_role:
-      name: common
-      tasks_from: python.yaml
- 
+- name: create app directory
+  ansible.builtin.file:
+    path: /app
+    state: directory
 
-  - name: system related
-    include_role:
-      name: common
-      tasks_from: systemd.yaml  
+- name: create roboshop system user
+  ansible.builtin.user:
+    name: roboshop
+    shell: /sbin/nologin
+    system: true
+    home: /app
+
+- name: download payment code
+  ansible.builtin.get_url:
+    url: https://roboshop-artifacts.s3.amazonaws.com/"{{ component }}"-v3.zip
+    dest: /tmp/"{{ component }}".zip
+
+- name: extract payment code
+  ansible.builtin.unarchive:
+    src: /tmp/"{{ component }}".zip
+    dest: /app
+    remote_src: yes
+
+- name: install dependencies
+  ansible.builtin.pip:
+    requirements: requirements.txt
+    executable: pip3.9
+  args:
+    chdir: /app
+
+- name: copy payment service
+  ansible.builtin.template:
+    src: "{{ component }}.service.j2"
+    dest: /etc/systemd/system/"{{ component }}".service
+
+- name: daemon reload
+  ansible.builtin.systemd_service:
+    daemon_reload: true
+
+- name: enable and start payment
+  ansible.builtin.service:
+    name: "{{ component }}"
+    state: started
+    enabled: yes

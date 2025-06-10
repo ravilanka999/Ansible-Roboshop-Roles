@@ -1,5 +1,3 @@
 CART_HOST: cart.sindhu.agency
 USER_HOST: user.sindhu.agency
 RABBITMQ_HOST: rabbitmq.sindhu.agency
-USER_NAME: roboshop
-USER_PASSWORD: roboshop123
